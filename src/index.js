@@ -141,7 +141,7 @@ class ParallaxScrollView extends Component {
 					},
 					foreground,
 					bodyComponent,
-					footerSpacer
+					// footerSpacer
 				)}
 				{maybeStickyHeader}
 			</View>
@@ -246,17 +246,17 @@ class ParallaxScrollView extends Component {
 						transform: [
 							{
 								translateY: interpolate(scrollY, {
-									inputRange: [0, p],
-									outputRange: [0, -(p / backgroundScrollSpeed)],
-									extrapolateRight: 'extend',
-									extrapolateLeft: 'clamp'
+                  inputRange: [ -viewHeight, 0, p],
+                  outputRange: [viewHeight/2, 0, -(p / backgroundScrollSpeed)],
+                  extrapolateRight: 'extend',
+                  extrapolateLeft: 'clamp'
 								})
 							},
 							{
 								scale: interpolate(scrollY, {
-									inputRange: [-viewHeight, 0],
-									outputRange: [outputScaleValue, 1],
-									extrapolate: 'clamp'
+                  inputRange: [ -viewHeight, 0],
+                  outputRange: [outputScaleValue, 1],
+                  extrapolate: 'clamp'
 								})
 							}
 						]
